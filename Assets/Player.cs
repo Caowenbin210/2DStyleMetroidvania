@@ -6,13 +6,15 @@ public class Player : MonoBehaviour
 {
     private StateMachine stateMachine;
 
-    private EntityState idleState;
+    public Player_IdleState idleState { get; private set; }
+    public Player_MoveState moveState { get; private set; }
 
     private void Awake()
     {
         stateMachine = new StateMachine();
 
-        idleState = new EntityState(stateMachine, "Idle State");
+        idleState = new Player_IdleState(this, stateMachine, "idle");
+        moveState = new Player_MoveState(this, stateMachine, "move");
     }
 
     private void Start()
