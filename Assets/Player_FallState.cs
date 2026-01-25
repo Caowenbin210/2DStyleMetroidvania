@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_FallState : EntityState
+public class Player_FallState : Player_AiredState
 {
     public Player_FallState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
@@ -13,7 +13,8 @@ public class Player_FallState : EntityState
         base.Update();
 
         // 如果玩家在地面切换待机状态
-
+        if (player.groundDetected)
+            stateMachine.ChangeState(player.idleState);
 
     }
 }
