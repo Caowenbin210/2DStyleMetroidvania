@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Player_FallState fallState { get; private set; }
     public Player_WallSlideState wallSlideState { get; private set; }
     public Player_WallJumpState wallJumpState { get; private set; }
+    public Player_DashState dashState { get; private set; }
 
 
     [Header("运动细节")]
@@ -27,6 +28,10 @@ public class Player : MonoBehaviour
     public float inAirMoveMultiplier = 0.7f; // 应该在 0-1 之间
     [Range(0, 1)]
     public float wallSlideSlowMultiplier = 0.7f;
+    [Space]
+    public float dashDuration = 0.25f;
+    public float dashSpeed = 20;
+
     private bool facingRight = true;
     public int facingDir { get; private set; } = 1;
     public Vector2 moveInput { get; private set; }
@@ -52,6 +57,7 @@ public class Player : MonoBehaviour
         fallState = new Player_FallState(this, stateMachine, "jumpFall");
         wallSlideState = new Player_WallSlideState(this, stateMachine, "wallSlide");
         wallJumpState = new Player_WallJumpState(this, stateMachine, "jumpFall");
+        dashState = new Player_DashState(this, stateMachine, "dash");
     }
 
     private void OnEnable()

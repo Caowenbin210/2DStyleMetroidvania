@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public abstract class EntityState
@@ -11,6 +12,8 @@ public abstract class EntityState
     protected Animator anim;
     protected Rigidbody2D rb;
     protected PlayerInputSet input;
+
+    protected float stateTimer;
 
     public EntityState(Player player, StateMachine stateMachine,string animBoolName)
     {
@@ -30,11 +33,25 @@ public abstract class EntityState
 
     public virtual void Update()
     {
+        stateTimer -= Time.deltaTime;
         anim.SetFloat("yVelocity", rb.velocity.y);
+
+        if (input.Player.Dash.WasPressedThisFrame() && CanDash())
+            stateMachine.ChangeState(player.dashState);
     }
 
     public virtual void Exit()
     {
         anim.SetBool(animBoolName, false);
+    }
+    private bool CanDash()
+    {
+        if(player.wallDetected)
+            return false;
+
+        if (stateMachine.currentState == player.dashState)
+            return false;
+
+        return true;
     }
 }
