@@ -6,15 +6,29 @@ public class Player_BasicAttackState : EntityState
 {
     private float attackVelocityTimer;
 
+    private const int FirstComboIndex = 1; // 攻击的下标从1开始 ， 被用于动画器中的basicAttack
+    private int comboIndex = 1;
+    private int comboLimit = 3;
+
+    private float lastTimeAttacked;
+
     public Player_BasicAttackState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
+        if (comboLimit != player.attackVelocity.Length)
+        {
+            comboLimit = player.attackVelocity.Length;
+            Debug.LogWarning("我已经根据连击次数调整了限制的次数！");
+        }
     }
 
     public override void Enter()
     {
         base.Enter();
-        GenerateAttackVelocity();
-        attackVelocityTimer = player.attackVelocityDuration;
+
+        ResetComboIndexIfNeeded();
+
+        anim.SetInteger("basicAttackIndex", comboIndex);
+        ApplyAttackVelocity();
 
 
     }
@@ -28,6 +42,14 @@ public class Player_BasicAttackState : EntityState
             stateMachine.ChangeState(player.idleState);
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+
+        comboIndex++;
+        lastTimeAttacked = Time.time;
+    }
+
     private void HandleAttackVelocity()
     {
         attackVelocityTimer -= Time.deltaTime;
@@ -36,8 +58,21 @@ public class Player_BasicAttackState : EntityState
             player.SetVelocity(0, rb.velocity.y);
     }
 
-    private void GenerateAttackVelocity()
+    private void ApplyAttackVelocity()
     {
-        player.SetVelocity(player.attackVelocity.x * player.facingDir, player.attackVelocity.y);
+        Vector2 attackVelocity = player.attackVelocity[comboIndex - 1];
+
+        attackVelocityTimer = player.attackVelocityDuration;
+        player.SetVelocity(attackVelocity.x * player.facingDir, attackVelocity.y);
     }
+
+    private void ResetComboIndexIfNeeded()
+    {
+        if (Time.time > lastTimeAttacked + player.comboResetTime)
+            comboIndex = FirstComboIndex;
+
+        if (comboIndex > comboLimit)
+            comboIndex = FirstComboIndex;
+    }
+
 }
