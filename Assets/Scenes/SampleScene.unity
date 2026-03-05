@@ -302,9 +302,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundLayers:
   - background: {fileID: 1164957927}
-    parallaxMultiplier: 0.9
+    parallaxMultiplier: 1
+    imageWidthOffset: 10
   - background: {fileID: 1207523498}
-    parallaxMultiplier: 0.7
+    parallaxMultiplier: 0.85
+    imageWidthOffset: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +439,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0131464, y: -3.0505805, z: 5.520199}
+  m_LocalPosition: {x: 6.012475, y: -4.5931907, z: 5.520199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -459,7 +461,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -575,7 +577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &781662979
 Grid:
   m_ObjectHideFlags: 0
@@ -658,7 +660,7 @@ MonoBehaviour:
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
-  m_ScreenY: 0.7
+  m_ScreenY: 0.6
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.5
   m_DeadZoneHeight: 0.4
@@ -5446,7 +5448,55 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1641718416}
+    m_ColliderPaths:
+    - - X: 70000000
+        Y: -19375000
+      - X: 70000000
+        Y: 0
+      - X: 30000000
+        Y: 0
+      - X: 30000000
+        Y: -19375000
+      - X: 30312500
+        Y: -20000000
+      - X: 69687504
+        Y: -20000000
+    - - X: 10000000
+        Y: -109375000
+      - X: 10312500
+        Y: -110000000
+      - X: 129687504
+        Y: -110000000
+      - X: 130000000
+        Y: -109375000
+      - X: 130312496
+        Y: -110000000
+      - X: 249687504
+        Y: -110000000
+      - X: 250000000
+        Y: -109375000
+      - X: 250312496
+        Y: -110000000
+      - X: 369687488
+        Y: -110000000
+      - X: 370000000
+        Y: -109375000
+      - X: 370000000
+        Y: -40000000
+      - X: 10000000
+        Y: -40000000
+      - X: 10000000
+        Y: -10000000
+      - X: -110000000
+        Y: -10000000
+      - X: -110000000
+        Y: -109375000
+      - X: -109687504
+        Y: -110000000
+      - X: 9687500
+        Y: -110000000
   m_CompositePaths:
     m_Paths:
     - - {x: 6.968734, y: -2}
@@ -5853,7 +5903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1980391817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6027,7 +6077,7 @@ Transform:
   m_GameObject: {fileID: 2136625718}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0131464, y: -3.0505805, z: 5.520199}
+  m_LocalPosition: {x: 6.0131464, y: -4.6505795, z: 5.520199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6080,7 +6130,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136625718}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
