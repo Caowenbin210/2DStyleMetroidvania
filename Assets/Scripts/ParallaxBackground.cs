@@ -14,7 +14,7 @@ public class ParallaxBackground : MonoBehaviour
     {
         mainCamera = Camera.main;
         cameraHalfWidth = mainCamera.orthographicSize * mainCamera.aspect; // 摄像机一半的长度等于正交尺寸乘宽高比例
-        CalculateImageLength();
+        InitializeLayers();
     }
 
     private void FixedUpdate()
@@ -33,7 +33,7 @@ public class ParallaxBackground : MonoBehaviour
         }
     }
 
-    private void CalculateImageLength()
+    private void InitializeLayers()
     {
         foreach (ParallaxLayer layer in backgroundLayers)
         {
