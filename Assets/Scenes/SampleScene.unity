@@ -158,6 +158,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  groundCheck: {fileID: 183792672}
   primaryWallCheck: {fileID: 1591010068}
   secondaryWallCheck: {fileID: 954944841}
   attackVelocity:
@@ -400,13 +401,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a955ce3c41cced5438e10a4115325f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckDistance: 0
-  wallCheckDistance: 0
+  groundCheckDistance: 0.5
+  wallCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  groundCheck: {fileID: 2076283696}
   primaryWallCheck: {fileID: 452689279}
-  secondaryWallCheck: {fileID: 452689279}
+  secondaryWallCheck: {fileID: 0}
+  idleTime: 2
+  moveSpeed: 1.4
+  moveAnimSpeedMultiplier: 1
 --- !u!4 &452689279
 Transform:
   m_ObjectHideFlags: 0
@@ -421,6 +426,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1498664580}
+  - {fileID: 2076283696}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -68660,6 +68666,37 @@ Transform:
   - {fileID: 1743238066}
   - {fileID: 1417818274}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2076283695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076283696}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2076283696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076283695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.601, y: -1.005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 452689279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136625718
 GameObject:
