@@ -25,7 +25,7 @@ public class Enemy : Entity
         RaycastHit2D hit = Physics2D.Raycast(playerCheck.position, Vector2.right, playerCheckDistance, whatIsPlayer | whatIsGround);
 
         if(hit.collider == null || hit.collider.gameObject.layer != LayerMask.NameToLayer("Player"))
-            return default;
+            return default; 
 
         return hit;
     }
