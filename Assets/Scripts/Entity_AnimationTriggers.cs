@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_AnimationTriggers : MonoBehaviour
+public class Entity_AnimationTriggers : MonoBehaviour
 {
-    private Player player;
+    private Entity entity;
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        entity = GetComponentInParent<Entity>();
     }
 
     public void CurrentStateTrigger()
     {
-        player.CalledAniamtionTrigger();
+        entity.CalledAniamtionTrigger();
     }
 }

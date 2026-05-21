@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Idle : EnemyState
+public class Enemy_Idle : Enemy_GroundedState
 {
     public Enemy_Idle(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
@@ -13,6 +13,8 @@ public class Enemy_Idle : EnemyState
         base.Enter();
 
         stateTimer = enemy.idleTime;
+
+        Debug.Log("Enter Idle");
     }
 
     public override void Update()
