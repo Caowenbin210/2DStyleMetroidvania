@@ -21,6 +21,9 @@ public class EnemyState : EntityState
         if(Input.GetKeyDown(KeyCode.F))
             stateMachine.ChangeState(enemy.attackState);
 
+        float battleAnimSpeedMultiplier = enemy.battleMoveSpeed / enemy.moveAnimSpeedMultiplier;
+
+        anim.SetFloat("battleAnimSpeedMultiplier", battleAnimSpeedMultiplier);
         anim.SetFloat("moveAnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
         anim.SetFloat("xVelocity",rb.velocity.x);
     }

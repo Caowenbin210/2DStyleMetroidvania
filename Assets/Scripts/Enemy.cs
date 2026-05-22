@@ -12,6 +12,9 @@ public class Enemy : Entity
     [Header("战斗细节")]
     public float battleMoveSpeed = 3;
     public float attackDistance = 2;
+    public float battleTimeDuration = 5;
+    public float minRetreatDistance = 1;
+    public Vector2 retreatVelocity;
 
     [Header("移动细节")]
     public float idleTime = 2;
@@ -24,7 +27,7 @@ public class Enemy : Entity
     [SerializeField] private Transform playerCheck;
     [SerializeField] private float playerCheckDistance = 10;
 
-    public RaycastHit2D PlayerDetection()
+    public RaycastHit2D PlayerDetected()
     {
         RaycastHit2D hit = Physics2D.Raycast(playerCheck.position, Vector2.right, playerCheckDistance, whatIsPlayer | whatIsGround);
 
@@ -42,5 +45,7 @@ public class Enemy : Entity
         Gizmos.DrawLine(playerCheck.position,new Vector3(playerCheck.position.x + (facingDir * playerCheckDistance),playerCheck.position.y));
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(playerCheck.position,new Vector3(playerCheck.position.x + (facingDir * attackDistance),playerCheck.position.y));
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(playerCheck.position,new Vector3(playerCheck.position.x + (facingDir * minRetreatDistance),playerCheck.position.y));
     }
 }
