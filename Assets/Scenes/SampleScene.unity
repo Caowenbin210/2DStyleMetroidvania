@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750439a098e6d054191eda9896404690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColliders: []
+  damage: 10
   targetCheck: {fileID: 1907716225}
   targetCheckRadius: 1
   whatIsTarget:
@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 452689277}
   - component: {fileID: 452689276}
   - component: {fileID: 452689280}
+  - component: {fileID: 452689281}
   m_Layer: 8
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -473,12 +474,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750439a098e6d054191eda9896404690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColliders: []
+  damage: 10
   targetCheck: {fileID: 1003929061}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &452689281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452689275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c22bf5aabfd324898e600213b4ea9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  isDead: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
