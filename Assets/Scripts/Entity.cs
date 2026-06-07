@@ -22,6 +22,10 @@ public class Entity : MonoBehaviour
     public bool groundDetected { get; private set; }
     public bool wallDetected { get; private set; }
 
+    // 条件变量
+    private bool isKnocked;
+    private Coroutine knockbackCo;
+
     protected virtual void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -48,8 +52,30 @@ public class Entity : MonoBehaviour
         stateMachine.currentState.AnimationTrigger();
     }
 
+    public void ReciveKnockback(Vector2 knockback, float duration)
+    {
+        if (knockbackCo != null)
+            StopCoroutine(knockbackCo);
+
+        knockbackCo = StartCoroutine(KnockbackCo(knockback, duration));
+    }
+
+    private IEnumerator KnockbackCo(Vector2 knockback, float duration)
+    {
+        isKnocked = true;
+        rb.velocity = knockback;
+
+        yield return new WaitForSeconds(duration);
+
+        rb.velocity = Vector2.zero;
+        isKnocked = false;
+    }
+
     public void SetVelocity(float xVelocity, float yVelocity)
     {
+        if (isKnocked)
+            return;
+
         rb.velocity = new Vector2(xVelocity, yVelocity);
         HandleFlip(xVelocity);
     }
