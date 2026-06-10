@@ -8,6 +8,7 @@ public class Enemy : Entity
     public Enemy_MoveState moveState;
     public Enemy_AttackState attackState;
     public Enemy_BattleState battleState;
+    public Enemy_DeadState deadState;
 
     [Header("战斗细节")]
     public float battleMoveSpeed = 3;
@@ -28,6 +29,16 @@ public class Enemy : Entity
     [SerializeField] private float playerCheckDistance = 10;
     public Transform player { get; private set; }
 
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+
+        stateMachine.ChangeState(deadState);
+    }
+
+    /// <summary>
+    /// 尝试进入战斗状态
+    /// </summary>
     public void TryEnterBattleState(Transform player)
     {
         if (stateMachine.currentState == battleState || stateMachine.currentState == attackState)

@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 实体的健康设置
+/// </summary>
 public class Entity_Health : MonoBehaviour
 {
-    private Entity_VFX entityVfx;
+    private Entity_VFX entityVfx; // 受击特效
     private Entity entity;
 
     [SerializeField] protected float currentHp;
@@ -27,7 +30,11 @@ public class Entity_Health : MonoBehaviour
 
         currentHp = maxHp;
     }
-
+    /// <summary>
+    /// 调用受击
+    /// </summary>
+    /// <param name="damage">造成的伤害</param>
+    /// <param name="damageDealer">造成伤害的目标</param>
     public virtual void TakeDamage(float damage,Transform damageDealer)
     {
         if(isDead) return;
@@ -51,12 +58,17 @@ public class Entity_Health : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        Debug.Log("Entity died!");
+        entity.EntityDeath();
     }
-
+    /// <summary>
+    /// 通过伤害值判断是轻击还是重击
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="damageDealer"></param>
+    /// <returns></returns>
     private Vector2 CalculateKnockback(float damage, Transform damageDealer)
     {
-        int direction = transform.position.x > damageDealer.position.x ? 1 : -1;
+        int direction = transform.position.x > damageDealer.position.x ? 1 : -1; // 判断造成伤害者在受伤者的左右
 
         Vector2 knockback = IsHeavyDamage(damage) ? heavyKnockbackpower : knockbackPower;
         knockback.x = knockback.x * direction;
@@ -64,7 +76,7 @@ public class Entity_Health : MonoBehaviour
         return knockback;
     }
 
-    private float CalculateDuration(float damage) => IsHeavyDamage(damage) ? heavyKnockbackDuration : knockbackDuration;
+    private float CalculateDuration(float damage) => IsHeavyDamage(damage) ? heavyKnockbackDuration : knockbackDuration; // 重击返回重击击退时间
 
-    private bool IsHeavyDamage(float damage) => damage / maxHp > heavyDamageThreshold;
+    private bool IsHeavyDamage(float damage) => damage / maxHp > heavyDamageThreshold; // 重击返回true
 }

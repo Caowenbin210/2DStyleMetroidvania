@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    private Camera mainCamera;
-    private float lastCameraPositionX;
-    private float cameraHalfWidth;
+    private Camera mainCamera; // 主摄像机
+    private float lastCameraPositionX; // 上次摄像机位置
+    private float cameraHalfWidth; // 摄像机一半宽度
 
     [SerializeField] private ParallaxLayer[] backgroundLayers;
 
@@ -32,7 +32,9 @@ public class ParallaxBackground : MonoBehaviour
             layer.LoopBackground(cameraLeftEdge, cameraRightEdge);
         }
     }
-
+    /// <summary>
+    /// 初始化视差层
+    /// </summary>
     private void InitializeLayers()
     {
         foreach (ParallaxLayer layer in backgroundLayers)

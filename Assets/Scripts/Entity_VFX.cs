@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 实体受击特效
+/// </summary>
 public class Entity_VFX : MonoBehaviour
 {
     private SpriteRenderer sr;
@@ -19,6 +22,9 @@ public class Entity_VFX : MonoBehaviour
         originalMaterial = sr.material;
     }
 
+    /// <summary>
+    /// 调用受击特效
+    /// </summary>
     public void PlayOnDamageVfx()
     {
         if(onDamageVfxCoroutine != null)

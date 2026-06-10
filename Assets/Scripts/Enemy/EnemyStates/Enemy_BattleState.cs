@@ -43,14 +43,25 @@ public class Enemy_BattleState : EnemyState
         else
             enemy.SetVelocity(enemy.battleMoveSpeed * DirectionToPlayer(), rb.velocity.y);
     }
-
+    /// <summary>
+    /// 更新进入战斗状态时间
+    /// </summary>
     private void UpdateBattleTimer() => lastTimeWasInBattle = Time.time;
-
+    /// <summary>
+    /// 战斗时间结束了
+    /// </summary>
     private bool BattleTimeIsOver() => Time.time > lastTimeWasInBattle + enemy.battleTimeDuration;
-
+    /// <summary>
+    /// 玩家和敌人的距离小于了设置的敌人攻击距离
+    /// </summary>
     private bool WithinAttackRange() => DistanceToPlayer() < enemy.attackDistance;
+    /// <summary>
+    /// 玩家和敌人之间的距离小于了因该跳开的距离
+    /// </summary>
     private bool ShouldRetreat() => DistanceToPlayer() < enemy.minRetreatDistance;
-
+    /// <summary>
+    /// 返回敌人和玩家的距离
+    /// </summary>
     private float DistanceToPlayer()
     {
         if (player == null)
@@ -58,7 +69,10 @@ public class Enemy_BattleState : EnemyState
 
         return Mathf.Abs(player.position.x - enemy.transform.position.x);
     }
-
+    /// <summary>
+    /// 判断玩家在敌人左侧还是右侧
+    /// </summary>
+    /// <returns></returns>
     private int DirectionToPlayer()
     {
         if (player == null)

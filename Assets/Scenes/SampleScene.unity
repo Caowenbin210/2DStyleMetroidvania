@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750439a098e6d054191eda9896404690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 25
   targetCheck: {fileID: 1907716225}
   targetCheckRadius: 1
   whatIsTarget:
@@ -373,9 +373,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 452689279}
-  - component: {fileID: 452689278}
   - component: {fileID: 452689277}
   - component: {fileID: 452689276}
+  - component: {fileID: 452689278}
   - component: {fileID: 452689280}
   - component: {fileID: 452689282}
   - component: {fileID: 452689283}
@@ -683,7 +683,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4295695, y: -2.6100407, z: 5.520199}
+  m_LocalPosition: {x: -5.710555, y: -2.6442823, z: 5.520199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -904,8 +904,8 @@ MonoBehaviour:
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.5
-  m_ScreenY: 0.6
+  m_ScreenX: 0.5008333
+  m_ScreenY: 0.5985186
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.5
   m_DeadZoneHeight: 0.4
@@ -68922,7 +68922,7 @@ Transform:
   m_GameObject: {fileID: 2136625718}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.6868534, y: -2.6205797, z: 5.520199}
+  m_LocalPosition: {x: -5.710555, y: -2.6442823, z: 5.520199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -68975,7 +68975,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136625718}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 

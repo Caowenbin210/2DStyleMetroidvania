@@ -17,14 +17,14 @@ public class Entity : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private Transform primaryWallCheck;
-    [SerializeField] private Transform secondaryWallCheck;
+    [SerializeField] private Transform primaryWallCheck; // 第一个墙体检测
+    [SerializeField] private Transform secondaryWallCheck; // 第二个墙体检测
     public bool groundDetected { get; private set; }
     public bool wallDetected { get; private set; }
 
     // 条件变量
-    private bool isKnocked;
-    private Coroutine knockbackCo;
+    private bool isKnocked; // 是否被击退
+    private Coroutine knockbackCo; // 击退的携程
 
     protected virtual void Awake()
     {
@@ -52,6 +52,14 @@ public class Entity : MonoBehaviour
         stateMachine.currentState.AnimationTrigger();
     }
 
+    public virtual void EntityDeath()
+    {
+
+    }
+
+    /// <summary>
+    /// 接收被击退命令
+    /// </summary>
     public void ReciveKnockback(Vector2 knockback, float duration)
     {
         if (knockbackCo != null)
@@ -60,6 +68,11 @@ public class Entity : MonoBehaviour
         knockbackCo = StartCoroutine(KnockbackCo(knockback, duration));
     }
 
+    /// <summary>
+    /// 接收击退
+    /// </summary>
+    /// <param name="knockback">击退的程度（向量）</param>
+    /// <param name="duration">击退保持的时间</param>
     private IEnumerator KnockbackCo(Vector2 knockback, float duration)
     {
         isKnocked = true;
@@ -73,7 +86,7 @@ public class Entity : MonoBehaviour
 
     public void SetVelocity(float xVelocity, float yVelocity)
     {
-        if (isKnocked)
+        if (isKnocked) // 如果处于被击退状态，不可动
             return;
 
         rb.velocity = new Vector2(xVelocity, yVelocity);
